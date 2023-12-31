@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/css/StyleSheet.css"/>
+
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 text-center buttons">
+                <a asp-controller="Store" asp-action="Index">Stores</a>
+                <a asp-controller="Item" asp-action="Index">Items</a>
+                <a asp-controller="StoreItem" asp-action="Index">Purchase Request</a>
+            </div>
+            <div class="col-8 text-center">
+                <img src="/Images/Inventory-Management-Software.png" alt="Inventory Managment Photo" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/script.js"></script>

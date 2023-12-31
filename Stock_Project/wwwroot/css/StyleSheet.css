@@ -1,0 +1,61 @@
+﻿body {
+    background-image: url('../images/desktop-wallpaper-gray-gradient-9-color-high-resolution-full-light-grey-plain.jpg');
+    background-size:cover;
+}
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89vh;
+    
+}
+
+img {
+    margin-top: 100px;
+    max-width: 90%;
+    height: 90%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+a {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 12px 36px;
+    color: #fff;
+    background: linear-gradient(90deg,#0162c8,#3ce3fc);
+    border-radius: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    overflow: hidden;
+}
+
+span {
+    position: absolute;
+    background: #fff;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        width: 0;
+        height: 0;
+        opacity: 0.2;
+    }
+    100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0.2;
+    }
+}

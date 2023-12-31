@@ -1,0 +1,30 @@
+﻿@model Item
+<link rel="stylesheet" href="~/css/StoreStyleSheet.css" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1 style="margin-top: 10px">Edit Item</h1>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input asp-for="Id" class="form-control" type="text" value="@Model.Id" aria-label="Disabled input example" disabled readonly>
+                        <div class="form-group" style="margin-bottom: 20px">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                        </div>
+                        <div class="form-group" style="margin-bottom: 20px">
+                            <input type="submit" value="Save" class="btn btn-primary" /> |
+                            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <img src="~/Images/store-6632033-5504110.png" class="storeImgDetails" />
+        </div>
+    </div>
+</div>

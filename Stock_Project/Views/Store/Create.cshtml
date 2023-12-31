@@ -1,0 +1,28 @@
+﻿@model Store
+<link rel="stylesheet" href="~/css/StoreStyleSheet.css" />
+
+<h1 class="createHeader">Add Store To Your List</h1>
+<a href="/store/index" class="btn btn-outline-secondary float-end" style="margin-top:10px; margin-left:10px">Back</a>
+<a href="/home" class="btn btn-outline-secondary float-end" style="margin-top:10px; margin-left:10px">Home</a>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div>
+                <img src="~/Images/store-6632033-5504110.png" class="storeImgDetails" />
+            </div>
+        </div>
+        <div class="col-6 formContainer">
+            <form method="post">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="1 for example" asp-for="Id">
+                    <label for="floatingInput">Id</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingPassword" placeholder="Name" asp-for="Name">
+                    <label for="floatingPassword">Name</label>
+                </div>
+                <input type="submit" value="Add" class="submitButton float-end" />
+            </form>
+        </div>
+    </div>
+</div>

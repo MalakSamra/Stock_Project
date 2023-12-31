@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Stock_Project.Models.StoreItem>
+<link rel="stylesheet" href="~/css/StoreStyleSheet.css" />
+
+
+<h1>Deatils Of The Store Items <a href="/home" class="btn btn-outline-secondary float-end" style="margin-top:10px">Home</a></h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div id="detailsStoreItem">
+                <table >
+                    <tbody>
+                        <tr>
+                            <td>
+                                Store Name:
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button id="StoredropdownButton" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Store
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @foreach (var store in ViewBag.Stores)
+                                        {
+                                            <li><a class="dropdown-item" href="#" onclick="updateItemsDropdown('@store.Id'),updateDropdownStoreValue('@store.Id')">@store.Name</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Item Name:
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button id="itemDropdownButton" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Store Items
+                                    </button>
+                                    <ul class="dropdown-menu" id="itemDropdown">
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Available Quantity:
+                            </td>
+                            <td>
+                                <input id="QuantityValue" class="form-control" type="text" value="Select An Item" aria-label="Disabled input example" disabled readonly>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-secondary" id="addButton" style="margin:20px">Add Purchase Request</button>
+                <button type="button" class="btn btn-danger" id="DltButton" style="margin:20px">Delete Items From A Store</button>
+                <div id="hiddenDeductQuantity" style="display:none">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control deletedQuantity" id="floatingInput" placeholder="10 for example" >
+                        <label for="floatingInput">Quantity To Be Deducted</label>
+                    </div>
+                    <button type="button" class="btn btn-danger" id="confirmDltButton">Delete</button>
+                    <button type="button" class="btn btn-outline-secondary" id="cancelButton">Cancel</button>
+                </div>
+                <input id="storeIDInputForDlt" class="form-control" type="text" value="" aria-label="Disabled input example" disabled style="display:none">
+                <input id="itemIDInputForDlt" class="form-control" type="text" value="0" aria-label="Disabled input example" disabled style="display:none">
+            </div>
+            <div id="hiddenImage" style="display:none">
+                <img class="storeImgDetails"  src="~/Images/istockphoto-520221204-612x612-removebg-preview.png" />
+            </div>
+        </div>
+        <div class="col-6">
+            <form method="post" onsubmit="submitStoreItemForm(event);" style="display:none" id="hiddenDiv">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Store Name:
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button id="StoredropdownButtonCreate" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Store
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @foreach (var store in ViewBag.Stores)
+                                        {
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownStoreValueCreate('@store.Id')">@store.Name</a></li>
+                                        }
+                                    </ul>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Item Name:
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button id="itemDropdownButtonCreate" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Item
+                                    </button>
+                                    <ul class="dropdown-menu" id="itemDropdown">
+                                        @foreach (var item in ViewBag.Items)
+                                        {
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownItemValueCreate(@item.Id)">@item.Name</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Quantity:
+                            </td>
+                            <td>
+                                <input type="number" id="inputPassword6" class="form-control quantity" aria-describedby="passwordHelpInline" placeholder="0">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input id="storeIDInput" class="form-control" type="text" value="0" aria-label="Disabled input example" disabled style="display:none">
+                <input id="itemIDInput" class="form-control" type="text" value="0" aria-label="Disabled input example" disabled style="display:none">
+                <button class="submitButton float-end" id="BackBtn" style="background-color:#828487; margin-left:20px">Back</button>
+                <input type="submit" value="Add" class="submitButton float-end" id="addRequestBtn" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="~/js/ajax.js"></script>

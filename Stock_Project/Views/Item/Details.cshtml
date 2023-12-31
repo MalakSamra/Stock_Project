@@ -1,0 +1,63 @@
+﻿@model Item
+<link rel="stylesheet" href="~/css/StoreStyleSheet.css" />
+
+<h1 class="createHeader">Details Page</h1>
+<a href="/item/index" class="btn btn-outline-secondary float-end" style="margin-top:10px; margin-left:10px">Back</a>
+<a href="/home" class="btn btn-outline-secondary float-end" style="margin-top:10px; margin-left:10px">Home</a>
+<div class="container" style="margin-top: 15px">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/Images/istockphoto-520221204-612x612-removebg-preview.png" class="storeImgDetails" />
+        </div>
+        <div class="col-6 formContainer">
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="detailsHeaders">
+                                Item ID:
+                            </td>
+                            <td class="detailsData">
+                                @Model.Id
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="detailsHeaders">
+                                Item Name:
+                            </td>
+                            <td class="detailsData">
+                                @Model.Name
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 class="detailsHeaders">Stores That Contain Item</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Store ID</th>
+                            <th scope="col">Store Name</th>
+                            <th scope="col">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var storeItem in ViewBag.StoreItems)
+                        {
+                            <tr>
+                                <td>
+                                    @storeItem.Store.Id
+                                </td>
+                                <td>
+                                    @storeItem.Store.Name
+                                </td>
+                                <td>
+                                    @storeItem.Quantity
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
